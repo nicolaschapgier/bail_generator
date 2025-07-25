@@ -1,3 +1,4 @@
+import os
 import re
 from fpdf import FPDF, XPos, YPos
 from datetime import date
@@ -46,11 +47,17 @@ def genere_bail(nom_locataire, taille_m2, adresse_bien, loyer, caution, date_deb
     pdf.cell(0, 10, text="Le bailleur : ____________________", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.cell(0, 10, text="Le locataire : ___________________", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
-    # Nettoyage du nom pour le nom de fichier
+
+    # Création du dossier /pdf si besoin
     nom_fichier = re.sub(r"\s+", "_", nom_locataire.strip().title())
+    output_dir = os.path.join("pdf", nom_fichier)
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Nettoyage du nom pour le nom de fichier
     mois_annee = date.today().strftime("%m-%Y")
     pdf_name = f"{nom_fichier}_{mois_annee}.pdf"
-    pdf.output(pdf_name)
+    pdf_path = os.path.join(output_dir, pdf_name)
+    pdf.output(pdf_path)
 
 if __name__ == "__main__":
     print("=== Générateur de bail de location ===")
