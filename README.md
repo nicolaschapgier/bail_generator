@@ -28,7 +28,7 @@ Ce projet permet de générer automatiquement un bail de location au format PDF 
 
 4. **Activer l’environnement virtuel**  
    ```sh
-   venv\Scripts\activate
+   .\venv\Scripts\activate
    ```
 
 5. **Installer les dépendances**  
