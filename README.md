@@ -18,7 +18,7 @@ Ce projet permet de générer automatiquement un bail de location au format PDF 
 
 2. **Se déplacer dans le dossier du projet**  
    ```sh
-   cd pdf_bail
+   cd bail_generator
    ```
 
 3. **Créer un environnement virtuel**  
